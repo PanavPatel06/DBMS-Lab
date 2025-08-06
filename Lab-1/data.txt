@@ -1,0 +1,3 @@
+24BCP128,Panav Patel,20,CSE
+24BCP157,Jyot Jayswal,19,CSE
+24BCP137,Aditya Sahoo,20,CSE
