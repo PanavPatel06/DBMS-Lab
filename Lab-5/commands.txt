@@ -1,0 +1,64 @@
+
+24BCP128 PANAV BRIJESH PATEL;
+
+CREATE TABLE AUTHOR (
+    Author_ID CHAR(5) PRIMARY KEY,
+    Lastname VARCHAR(15) NOT NULL,
+    Firstname VARCHAR(15) NOT NULL,
+    Email VARCHAR(40),
+    City VARCHAR(15),
+    Country VARCHAR(15)
+)
+
+DESC AUTHOR
+
+
+CREATE TABLE BOOK (
+    Book_ID CHAR(5) PRIMARY KEY CHECK (Book_ID LIKE 'B%'),
+    Book_Title VARCHAR(255) NOT NULL,
+    Copies INT CHECK (Copies > 2)
+)
+
+DESC BOOK
+
+CREATE TABLE AUTHOR_LIST (
+    Author_ID CHAR(5),
+    Book_ID CHAR(5),
+    Role VARCHAR(15),
+    PRIMARY KEY (Author_ID, Book_ID),
+    FOREIGN KEY (Author_ID) REFERENCES AUTHOR(Author_ID),
+    FOREIGN KEY (Book_ID) REFERENCES BOOK(Book_ID)
+)
+
+DESC AUTHOR_LIST
+
+INSERT INTO AUTHOR VALUES
+('A001', 'Smith', 'John', 'john.smith@example.com', 'New York', 'USA'),
+('A002', 'Johnson', 'Emily', 'emily.johnson@example.com', 'Los Angeles', 'USA'),
+('A003', 'Williams', 'David', 'david.williams@example.com', 'Chicago', 'USA'),
+('A004', 'Brown', 'Linda', 'linda.brown@example.com', 'San Francisco', 'USA')
+
+SELECT * FROM AUTHOR
+
+INSERT INTO BOOK VALUES
+('B001', 'The Great Adventure', 10),
+('B002', 'Learning MySQL', 5),
+('B003', 'Mastering SQL', 7),
+('B004', 'Introduction to Databases', 3)
+
+SELECT * FROM BOOK
+
+INSERT INTO AUTHOR_LIST VALUES
+('A001', 'B001', 'Author'),
+('A002', 'B002', 'Author'),
+('A003', 'B003', 'Co-Author'),
+('A004', 'B004', 'Editor')
+
+SELECT * FROM AUTHOR_LIST
+
+ALTER TABLE AUTHOR_LIST ADD COLUMN Publisher VARCHAR(30);
+
+DESC TABLE AUTHOR_LIST
+
+SELECT * FROM AUTHOR_LIST
+
